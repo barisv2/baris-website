@@ -18,7 +18,7 @@ const { Content } = await post.render();
 
 <html lang="en">
   <head>
-    <BaseHead title={`${post.data.title} · Barış Gürbüzler`} description={post.data.description} />
+    <BaseHead title={post.data.title + ' - Baris Gurbuzler'} description={post.data.description} />
   </head>
   <body>
     <Header />
@@ -32,4 +32,21 @@ const { Content } = await post.render();
           />
         )}
         <div style="margin-bottom:2rem;">
-          <span class={`tag ${post.data.tags?.[0]?.toLowerCase() === 'note' ? 'tag-note' : 'tag-essay
+          <span class="tag tag-essay">
+            {post.data.tags?.[0] ?? 'Essay'}
+          </span>
+          <span style="font-size:0.8rem; color:var(--muted); margin-left:0.75rem;">
+            {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </span>
+        </div>
+        <h1 style="font-family:var(--serif); font-size:2rem; line-height:1.2; margin-bottom:2rem;">
+          {post.data.title}
+        </h1>
+        <div class="prose">
+          <Content />
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>
