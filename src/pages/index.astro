@@ -32,7 +32,7 @@ const posts = (await getCollection('blog'))
         {posts.map(post => (
           <li>
             <div class="post-left">
-              <a href={`/blog/${post.id.replace('.md', '')}/`}>{post.data.title}</a>
+              <a href={`/writing/${post.id.replace('.md', '')}/`}>{post.data.title}</a>
               <span class={`tag ${post.data.tags?.includes('note') ? 'tag-note' : 'tag-essay'}`}>
                 {post.data.tags?.includes('note') ? 'Note' : 'Essay'}
               </span>
