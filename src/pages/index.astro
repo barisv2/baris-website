@@ -11,19 +11,20 @@ const posts = (await getCollection('blog'))
 
 <html lang="en">
   <head>
-    <BaseHead title="Barış Gürbüzler" description="Co-founder Hardal. Writing about anything I'm interested in at that moment." />
+    <BaseHead title="Barış Gürbüzler" description="Co-founder & CEO of Hardal. Writing about products, privacy, and the web." />
   </head>
   <body>
     <Header />
     <main>
-      <p class="eyebrow">Barcelona · Co-founder, Hardal</p>
+      <p class="eyebrow">Barcelona · Co-founder & CEO, Hardal</p>
       <h1 class="hero-title">
         I don't know a lot<br />
         of things. Here's what<br />
         <em>I'm finding out.</em>
       </h1>
       <p class="hero-bio">
-        Building <a href="https://usehardal.com" target="_blank">Hardal</a>. Writing about my journey as a startup founder or anything I'm interested in at that moment.
+        Building <a href="https://usehardal.com" target="_blank">Hardal</a> — privacy-first analytics
+        for teams that give a damn. Writing about products, privacy, and what it means to build with care.
       </p>
 
       <p class="section-label">Recent writing</p>
@@ -31,7 +32,7 @@ const posts = (await getCollection('blog'))
         {posts.map(post => (
           <li>
             <div class="post-left">
-              href={`/blog/${post.id.replace('.md', '')}/`}
+              <a href={`/blog/${post.id.replace('.md', '')}/`}>{post.data.title}</a>
               <span class={`tag ${post.data.tags?.includes('note') ? 'tag-note' : 'tag-essay'}`}>
                 {post.data.tags?.includes('note') ? 'Note' : 'Essay'}
               </span>
