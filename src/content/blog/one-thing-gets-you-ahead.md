@@ -2,7 +2,8 @@
 title: 'The One Thing That Actually Gets You Ahead At Work'
 description: 'Most people are trying not to lose. The ones who win have made a different choice about what success looks like.'
 pubDate: '2026-02-12'
-tags: ['Essay']
+tags: ['Essay','Personal Development']
+heroImage: 'https://res.cloudinary.com/dwnz4qg8n/image/upload/q_auto/f_auto/v1779984549/1770899281190_sjlkse.png'
 ---
 
 Have you ever been on a project that goes on and on for months but never actually starts?
