@@ -7,24 +7,33 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 5);
+
+const randomPost = posts[Math.floor(Math.random() * posts.length)];
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title="Barış Gürbüzler" description="Co-founder of Hardal. Writing about anything I'm interested in at that moment. " />
+    <BaseHead title="Barış Gürbüzler" description="Co-founder of Hardal. Writing about my journey as a startup co-founder and whatever I'm interested in at the moment." />
   </head>
   <body>
     <Header />
     <main>
-      <p class="eyebrow">Barcelona · Co-founder & CEO, Hardal</p>
       <h1 class="hero-title">
         I don't know a lot<br />
         of things. Here's what<br />
-        <em>I'm finding out.</em>
+        I'm finding out.
       </h1>
       <p class="hero-bio">
-        Building <a href="https://usehardal.com" target="_blank">Hardal</a>. Writing about my journey as a startup co-founder and whatever I'm interested in at the moment.
+        Building <a href="https://usehardal.com" target="_blank">Hardal</a>. 
+        Writing about my journey as a startup co-founder and whatever I'm interested in at the moment.
       </p>
+
+      {randomPost && (
+        <a href={`/writing/${randomPost.id.replace('.md', '')}/`} class="random-post">
+          <span class="random-label">Random read →</span>
+          <span class="random-title">{randomPost.data.title}</span>
+        </a>
+      )}
 
       <p class="section-label">Recent writing</p>
       <ul class="post-list">
@@ -46,3 +55,33 @@ const posts = (await getCollection('blog'))
     <Footer />
   </body>
 </html>
+
+<style>
+  .random-post {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1.2rem 1.4rem;
+    background: var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 3rem;
+    transition: opacity 0.15s ease;
+  }
+
+  .random-post:hover { opacity: 0.7; }
+
+  .random-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .random-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--text);
+  }
+</style>
