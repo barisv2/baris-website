@@ -1,0 +1,48 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const talks = [
+  // Add your talks here later. Example format:
+  // {
+  //   title: "Privacy-first analytics at scale",
+  //   event: "MeasureCamp Barcelona",
+  //   date: "Mar 2024",
+  //   type: "Conference",
+  //   url: "https://...",
+  // },
+];
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title="Talks · Barış Gürbüzler" description="Conference talks and podcast appearances." />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="page-header">
+        <h1 class="page-title">Talks</h1>
+        <p class="page-subtitle">Conferences, podcasts, and conversations.</p>
+      </div>
+
+      {talks.length === 0 ? (
+        <p style="font-size: 0.88rem; color: var(--muted);">More soon.</p>
+      ) : (
+        <div>
+          {talks.map(talk => (
+            <div class="post-card">
+              <div class="post-card-top">
+                <a href={talk.url} target="_blank" class="post-card-title">{talk.title}</a>
+                <span class="post-card-meta">{talk.type} · {talk.date}</span>
+              </div>
+              <p class="post-card-excerpt">{talk.event}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </main>
+    <Footer />
+  </body>
+</html>

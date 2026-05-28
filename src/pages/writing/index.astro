@@ -1,0 +1,113 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const tags = ['All', 'Essay', 'Note', 'Idea'];
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title="Writing · Barış Gürbüzler" description="Essays, notes, and ideas on products, privacy, and building." />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="page-header">
+        <h1 class="page-title">Writing</h1>
+        <p class="page-subtitle">Essays, notes, and half-formed ideas.</p>
+      </div>
+
+      <div class="tag-filters">
+        {tags.map(tag => (
+          <button class={`tag-filter ${tag === 'All' ? 'active' : ''}`} data-tag={tag}>
+            {tag}
+          </button>
+        ))}
+      </div>
+
+      <div id="post-list">
+        {allPosts.map(post => {
+          const postTag = post.data.tags?.[0] ?? 'Essay';
+          const tagClass = postTag.toLowerCase();
+          return (
+            <div class="post-card" data-tag={postTag}>
+              <div class="post-card-top">
+                <a href={`/blog/${post.slug}/`} class="post-card-title">{post.data.title}</a>
+                <span class="post-card-meta">
+                  <span class={`tag tag-${tagClass}`}>{postTag}</span>
+                  {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                </span>
+              </div>
+              {post.data.description && (
+                <p class="post-card-excerpt">{post.data.description}</p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .tag-filters {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .tag-filter {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 4px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .tag-filter:hover { color: var(--text); border-color: var(--text); }
+
+  .tag-filter.active {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+  }
+
+  .post-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+</style>
+
+<script>
+  const filters = document.querySelectorAll('.tag-filter');
+  const cards   = document.querySelectorAll('.post-card');
+
+  filters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filters.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const selected = btn.dataset.tag;
+      cards.forEach(card => {
+        const show = selected === 'All' || card.dataset.tag === selected;
+        (card as HTMLElement).style.display = show ? 'block' : 'none';
+      });
+    });
+  });
+</script>
