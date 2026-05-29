@@ -19,9 +19,7 @@ const randomPost = posts[Math.floor(Math.random() * posts.length)];
     <Header />
     <main>
       <h1 class="hero-title">
-        I don't know a lot<br />
-        of things. Here's what<br />
-        I'm finding out.
+        I don't know a lot of things. Here's what I'm finding out.
       </h1>
       <p class="hero-bio">
         Building <a href="https://usehardal.com" target="_blank">Hardal</a>. 
@@ -29,10 +27,9 @@ const randomPost = posts[Math.floor(Math.random() * posts.length)];
       </p>
 
       {randomPost && (
-        <a href={`/writing/${randomPost.id.replace('.md', '')}/`} class="random-post">
-          <span class="random-label">Random read →</span>
-          <span class="random-title">{randomPost.data.title}</span>
-        </a>
+        <p class="random-read">
+          Not sure where to start? Try <a href={`/writing/${randomPost.id.replace('.md', '')}/`}>{randomPost.data.title}</a>.
+        </p>
       )}
 
       <p class="section-label">Recent writing</p>
@@ -57,31 +54,20 @@ const randomPost = posts[Math.floor(Math.random() * posts.length)];
 </html>
 
 <style>
-  .random-post {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    padding: 1.2rem 1.4rem;
-    background: var(--border);
-    border-radius: 8px;
-    text-decoration: none;
+  .random-read {
+    font-size: 0.88rem;
+    color: var(--muted);
     margin-bottom: 3rem;
-    transition: opacity 0.15s ease;
   }
 
-  .random-post:hover { opacity: 0.7; }
-
-  .random-label {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-
-  .random-title {
-    font-family: var(--serif);
-    font-size: 1rem;
+  .random-read a {
     color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+  }
+
+  .random-read a:hover {
+    color: var(--accent);
   }
 </style>
