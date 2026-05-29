@@ -10,11 +10,12 @@ const currentPath = Astro.url.pathname;
 ---
 
 <nav>
+  <a href="/" class="site-name">Barış Gürbüzler</a>
   <div class="nav-links">
     {navLinks.map(link => (
       link.external
         ? <a href={link.href} target="_blank" rel="noopener">{link.label}</a>
-        : <a href={link.href} class={currentPath.startsWith(link.href) ? 'active' : ''}>{link.label}</a>
+        : <a href={link.href} class={currentPath.startsWith(link.href) ? 'active' : ''}>{link.link}</a>
     ))}
   </div>
 </nav>
