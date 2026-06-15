@@ -26,9 +26,9 @@ You can move faster now, so it stings every time you don't. The money bought us 
 
 But here's the part I keep coming back to.
 Every so often, I make myself stop and actually feel the weight. Our costs are 20x what they were a year ago. The team isn't three or four people anymore. None of that happened in a single dramatic moment; it happened slowly, one hire, one tool, one decision at a time, until it quietly became the normal of my life.
-That's the strange thing about growth. You're so deep inside it that you stop noticing it. The numbers that would have terrified me last year are just another Tuesday now. You only see what's changed when you take one step back and say "wow, when did this happen?"
+That's the strange thing about growth. You're so deep inside it that you stop noticing it. The numbers that would have terrified me last year are just another Tuesday now. You only see what's changed when you take one step back and say "when did this happen?"
 
 And when I do this, the stress changes color. A year ago, I would have given almost anything for this exact problem. "How do I spend this money well, how do I move faster?" is a problem you earn. It means you survived the first one. Most companies never get here. The stress I'm describing is a privilege, and if I spend all my energy wishing it away, I miss the whole thing.
 So, I'm not trying to make it calm down anymore. That was the wrong goal. I'm trying to stay awake inside it. Feel the weight, make the call, learn from what it teaches me, and do it again tomorrow.
 
-The goal was never to get somewhere quiet. The goal is to experience the whole thing.
+The goal was never to get somewhere quiet.
