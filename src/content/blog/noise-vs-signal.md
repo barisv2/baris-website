@@ -6,8 +6,6 @@ tags: ['Essay', 'Approach']
 heroImage: 'https://res.cloudinary.com/dwnz4qg8n/image/upload/q_auto/f_auto/v1781873305/Screenshot_at_Jun_19_14-48-14_goawwb.png'
 ---
 
-# Noise vs signal: what AI actually changed in marketing
-
 In 2023, Coinbase put out a [report](https://www.coinbase.com/en-es/blog/more-than-half-the-fortune-100-are-developing-blockchain-initiatives-to-stay) with a big number: more than half the Fortune 100 were building blockchain projects. It sounded like the future was already here. A few years later, almost none of it shipped. Try naming one.
 
 That's how a hype cycle works. Everyone is building, almost nothing lands, and there's a lot of noise in the middle.
