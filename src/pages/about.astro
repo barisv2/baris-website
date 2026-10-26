@@ -6,71 +6,25 @@ import Footer from '../components/Footer.astro';
 
 <html lang="en">
   <head>
-    <BaseHead title="About · Barış Gürbüzler" description="Co-founder & CEO of Hardal. Based in Barcelona." />
+    <BaseHead title="About · Barış Gürbüzler" description="Originally from Turkey now in Barcelona. Building Hardal. Helping brands get accurate data & see their agentic traffic." />
   </head>
   <body>
     <Header />
-    <main>
-      <div class="page-header">
-        <h1 class="page-title">About</h1>
-      </div>
+    <main class="animate-in">
+      <h1 class="page-title">About</h1>
 
-      <div class="prose">
+      <div class="about-text" style="margin-top: 1.5rem;">
         <p>
-          I'm Barış. Originally from Antalya, studied in Istanbul, and now 
-          living in Barcelona with my wife Göz, our cat Kiwi, and our dog Miso.
-        </p>
-
-        <p>
-          I co-founded <a href="https://usehardal.com" target="_blank">Hardal</a> with 
-          <a href="https://berkay.fyi" target="_blank">Berkay</a> because marketing analytics 
-          had become a mess, and weirdly hard to the marketers 
-          who relied on it most. We're fixing that: the best way for accurate data.
-        </p>
-
-        <p>
-          Outside of building Hardal I'm a curious generalist trying to go deeper. 
-          Things I keep coming back to: sailing, surfing, tennis, plants, 
-          and the sea in general. Barcelona makes most of these accessible.
-        </p>
-
-        <p>
-          As mentioned, I don't know a lot of things. This is the website where I share the stuff I'm finding out.
-          I'd love to hear from you too.
+          Originally from Turkey now in Barcelona. Building <a href="https://usehardal.com" target="_blank" rel="noopener">Hardal</a>. Helping brands get accurate data & see their agentic traffic.
         </p>
       </div>
 
-      <div class="contact-line">
-        <a href="https://x.com/YOUR_HANDLE" target="_blank">X</a>
-        <span class="divider">·</span>
-        <a href="https://linkedin.com/in/YOUR_HANDLE" target="_blank">LinkedIn</a>
+      <div style="margin-top: 2rem;">
+        <p class="contact-line">
+          Find me on <a href="https://x.com/baris_v2" target="_blank" rel="noopener">X</a> or <a href="https://www.linkedin.com/in/barisgurbuzler/" target="_blank" rel="noopener">LinkedIn</a>.
+        </p>
       </div>
     </main>
     <Footer />
   </body>
 </html>
-
-<style>
-  .prose {
-    max-width: 560px;
-  }
-
-  .contact-line {
-    margin-top: 3rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.88rem;
-  }
-
-  .contact-line a {
-    color: var(--text);
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent);
-    padding-bottom: 1px;
-  }
-
-  .contact-line a:hover { color: var(--muted); }
-
-  .divider { color: var(--border); }
-</style>

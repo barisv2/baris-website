@@ -5,69 +5,69 @@ import Footer from '../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 5);
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const randomPost = posts[Math.floor(Math.random() * posts.length)];
+const postsByYear = posts.reduce((acc, post) => {
+  const year = post.data.pubDate.getFullYear();
+  if (!acc[year]) acc[year] = [];
+  acc[year].push(post);
+  return acc;
+}, {} as Record<number, typeof posts>);
+
+const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a));
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title="Barış Gürbüzler" description="Co-founder of Hardal. Writing about my journey as a startup co-founder and whatever I'm interested in at the moment." />
+    <BaseHead 
+      title="Barış Gürbüzler" 
+      description="Originally from Turkey now in Barcelona. Building Hardal. Helping brands get accurate data & see their agentic traffic." 
+    />
   </head>
   <body>
+    <!-- If you're reading this: hello. I appreciate the curiosity. -->
     <Header />
-    <main>
-      <h1 class="hero-title">
-        I don't know a lot of things. Here's what I'm finding out.
-      </h1>
-      <p class="hero-bio">
-        Building <a href="https://usehardal.com" target="_blank">Hardal</a>. 
-        Writing about my journey as a startup co-founder and whatever I'm interested in at the moment.
-      </p>
+    <main class="animate-in">
+      <section class="section">
+        <h2 class="section-title">About</h2>
+        <div class="about-text">
+          <p>
+            Originally from Turkey now in Barcelona. Building <a href="https://usehardal.com" target="_blank" rel="noopener">Hardal</a>. Helping brands get accurate data & see their agentic traffic.
+          </p>
+        </div>
+      </section>
 
-      {randomPost && (
-        <p class="random-read">
-          Not sure where to start? Try <a href={`/writing/${randomPost.id.replace('.md', '')}/`}>{randomPost.data.title}</a>.
-        </p>
-      )}
-
-      <p class="section-label">Recent writing</p>
-      <ul class="post-list">
-        {posts.map(post => (
-          <li>
-            <div class="post-left">
-              <a href={`/writing/${post.id.replace('.md', '')}/`}>{post.data.title}</a>
-              <span class={`tag ${post.data.tags?.includes('note') ? 'tag-note' : 'tag-essay'}`}>
-                {post.data.tags?.includes('note') ? 'Note' : 'Essay'}
-              </span>
-            </div>
-            <span class="post-date">
-              {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-            </span>
-          </li>
+      <section class="section">
+        <h2 class="section-title">Writing</h2>
+        {years.map(year => (
+          <div class="year-group">
+            <div class="year-label">{year}</div>
+            <ul class="writing-list">
+              {postsByYear[Number(year)].map(post => (
+                <li>
+                  <a href={`/writing/${post.id.replace('.md', '')}/`}>{post.data.title}</a>
+                  <span class="date">
+                    {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         ))}
-      </ul>
+        <p style="margin-top: 1rem;">
+          <a href="https://www.linkedin.com/in/barisgurbuzler/" target="_blank" rel="noopener" style="font-size: 0.875rem; color: var(--muted);">
+            More on LinkedIn &rarr;
+          </a>
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Contact</h2>
+        <p class="contact-line">
+          Find me on <a href="https://x.com/baris_v2" target="_blank" rel="noopener">X</a> or <a href="https://www.linkedin.com/in/barisgurbuzler/" target="_blank" rel="noopener">LinkedIn</a>.
+        </p>
+      </section>
     </main>
     <Footer />
   </body>
 </html>
-
-<style>
-  .random-read {
-    font-size: 0.88rem;
-    color: var(--muted);
-    margin-bottom: 3rem;
-  }
-
-  .random-read a {
-    color: var(--text);
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent);
-    padding-bottom: 1px;
-  }
-
-  .random-read a:hover {
-    color: var(--accent);
-  }
-</style>
