@@ -13,6 +13,43 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description } = Astro.props;
 ---
 
+<!-- Hardal Analytics -->
+<script
+	is:inline
+	async
+	src="https://collect.barisgurbuzler.com/tracker.js"
+	data-host-url="https://collect.barisgurbuzler.com"
+	data-tenant-id="f1480d55-e3fa-4ded-a9d7-7fd283726389"
+	data-source-id="14b7a7b7-ee39-48ee-9b5a-bd102b98794b"
+	data-auto-track="true"
+	data-spa="true">
+</script>
+<script is:inline>
+(function () {
+	document.addEventListener('click', function (e) {
+		var el = e.target;
+		while (el && el !== document.body) {
+			var name = el.getAttribute && el.getAttribute('data-hrd-event');
+			if (name) {
+				var props = {};
+				var attrs = el.attributes;
+				for (var i = 0; i < attrs.length; i++) {
+					var attr = attrs[i];
+					if (attr.name.indexOf('data-hrd-') === 0 && attr.name !== 'data-hrd-event') {
+						props[attr.name.slice(9)] = attr.value;
+					}
+				}
+				if (typeof window.hrd !== 'undefined' && typeof window.hrd.track === 'function') {
+					window.hrd.track(name, props);
+				}
+				return;
+			}
+			el = el.parentElement;
+		}
+	});
+})();
+</script>
+
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
