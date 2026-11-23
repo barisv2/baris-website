@@ -32,7 +32,7 @@ async function sendAgentEvent(
   const timeoutId = setTimeout(() => controller.abort(), 3000);
 
   try {
-    await fetch(`${HARDAL_HOST_URL}/agent-events`, {
+    await fetch(`${HARDAL_HOST_URL}/agent-events/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
